@@ -16,19 +16,19 @@ export const SOCIAL = {
 };
 
 export const images = {
-  logo: "/images/bold-logo.png",
+  logo: "/images/bold-logo.webp",
   brandKey: "/images/brand-key.jpeg",
-  terrace: "/images/scene-terrace.png",
-  courtyard: "/images/scene-courtyard.png",
-  interior: "/images/scene-interior.png",
-  evening: "/images/scene-evening.png",
-  lobby: "/images/scene-lobby.png",
-  navy: "/images/product-navy.png",
-  white: "/images/product-white.png",
-  refill: "/images/scene-refill.png",
-  atelierNatural: "/images/atelier-natural.png",
-  coverPlace: "/images/scene-cover-place.png",
-  coverOnly: "/images/scene-cover-only.png",
+  terrace: "/images/scene-terrace.webp",
+  courtyard: "/images/scene-courtyard.webp",
+  interior: "/images/scene-interior.webp",
+  evening: "/images/scene-evening.webp",
+  lobby: "/images/scene-lobby.webp",
+  navy: "/images/product-navy.webp",
+  white: "/images/product-white.webp",
+  refill: "/images/scene-refill.webp",
+  atelierNatural: "/images/atelier-natural.webp",
+  coverPlace: "/images/scene-cover-place.webp",
+  coverOnly: "/images/scene-cover-only.webp",
 };
 
 export type Product = {
