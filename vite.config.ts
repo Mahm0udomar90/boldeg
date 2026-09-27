@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 
 export default defineConfig({
-  base: process.env.GITHUB_PAGES ? '/boldeg/' : '/',
   plugins: [
     tailwindcss(),
     tanstackStart({
@@ -18,4 +17,4 @@ export default defineConfig({
     }),
     react(),
   ],
-}) 
+})
