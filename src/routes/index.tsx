@@ -49,11 +49,11 @@ const copy = {
   s2title: { en: "Material first.", ar: "الخامة أولاً." } as L,
   s2titleItalic: { en: "Everything else follows.", ar: "وكل شيء يأتي بعدها." } as L,
   s2body: {
-    en: "A mineral shell hand-worked to the grain of Egyptian limestone. A solid oak frame, blackened or left natural. No logos, no ornament, no noise — only the honest weight of the material.",
-    ar: "قشرة معدنية مشغولة يدوياً على ملمس الحجر الجيري المصري. هيكل من البلوط الصلب، مُسوَّد أو طبيعي. بلا شعارات ولا زخرفة ولا ضجيج — فقط صدق الخامة ووزنها.",
+    en: "A paper mâché shell, hand-shaped and cured layer by layer until it reads like stone. A solid oak frame, blackened or left natural. No logos, no ornament, no noise — only the honest craft of the material.",
+    ar: "قشرة من الورق المعجون (بابيه ماشيه) مشغولة يدوياً طبقة بعد طبقة حتى تُقرأ كالحجر. هيكل من البلوط الصلب، مُسوَّد أو طبيعي. بلا شعارات ولا زخرفة ولا ضجيج — فقط صدق الحرفة ووزنها.",
   } as L,
   bullets: [
-    { en: "Hand-finished mineral shell", ar: "قشرة معدنية مُشطّبة يدوياً" },
+    { en: "Hand-shaped paper mâché shell", ar: "قشرة من الورق المعجون مُشكَّلة يدوياً" },
     { en: "Solid oak joinery", ar: "نجارة بلوط صلب" },
     { en: "Matte, low-glare surfaces", ar: "أسطح مطفية بلا لمعان" },
   ] as L[],
@@ -134,7 +134,7 @@ function Home() {
         <Reveal className="overflow-hidden">
           <img
             src={images.evening}
-            alt="Close view of the textured mineral surface of a Bold cover in a warm, stone-walled room"
+            alt="Close view of the textured paper mâché surface of a Bold cover in a warm, stone-walled room"
             className="img-luxe h-[60vh] w-full object-cover lg:h-full lg:min-h-[92vh]"
             loading="lazy"
           />

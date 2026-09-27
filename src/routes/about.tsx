@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Bold is a Cairo design house making quietly luxurious objects for contemporary interiors — limestone textures, solid oak and restraint.",
+          "Bold is a Cairo design house making quietly luxurious objects for contemporary interiors — hand-shaped paper mâché, solid oak and restraint.",
       },
       { property: "og:title", content: "About — Bold" },
       {
@@ -35,8 +35,8 @@ const copy = {
     ar: "بدأت Bold من ملاحظة بسيطة: الأشياء اليومية التي نعيش معها نادراً ما تُصمَّم للغرف التي تنتهي فيها. نحن نتخذ القرار المعاكس — نبدأ من العمارة.",
   } as L,
   p1: {
-    en: "Each piece is drawn in Cairo and finished by hand. The shells are worked to the grain of Egyptian limestone; the frames are cut from solid oak and either blackened or left in their natural warmth.",
-    ar: "كل قطعة تُرسم في القاهرة وتُشطَّب يدوياً. القشرة مشغولة على ملمس الحجر الجيري المصري، والهياكل من بلوط صلب إمّا مُسوَّد أو مُترَك بدفئه الطبيعي.",
+    en: "Each piece is drawn in Cairo and finished by hand. The shells are hand-shaped from paper mâché, layered and cured to a fine, stone-like texture; the frames are cut from solid oak and either blackened or left in their natural warmth.",
+    ar: "كل قطعة تُرسم في القاهرة وتُشطَّب يدوياً. القشرة مصنوعة يدوياً من الورق المعجون (بابيه ماشيه)، مشغولة طبقة بعد طبقة بملمس ناعم يُشبه الحجر، والهياكل من بلوط صلب إمّا مُسوَّد أو مُترَك بدفئه الطبيعي.",
   } as L,
   p2: {
     en: "We are building a lifestyle house rather than a catalogue. Today that means covers, stands and vessels. Over time it will mean a wider language of objects — all held to the same restraint.",

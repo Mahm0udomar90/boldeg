@@ -78,8 +78,8 @@ export const products: Product[] = [
       {
         title: { en: "Materials", ar: "الخامات" },
         body: {
-          en: "Hand-finished mineral shell with a fine limestone texture, on a solid oak frame with a matte seal.",
-          ar: "قشرة معدنية مُشطّبة يدوياً بملمس حجر جيري ناعم، على هيكل بلوط صلب بطبقة حماية مطفية.",
+          en: "Hand-shaped paper mâché shell, layered and cured to a fine stone-like texture, on a solid oak frame with a matte seal.",
+          ar: "قشرة من الورق المعجون (بابيه ماشيه) مشغولة يدوياً طبقة بعد طبقة بملمس ناعم يُشبه الحجر، على هيكل بلوط صلب بطبقة حماية مطفية.",
         },
       },
       {
@@ -122,8 +122,8 @@ export const products: Product[] = [
       {
         title: { en: "Materials", ar: "الخامات" },
         body: {
-          en: "Pigmented mineral shell with a hand-worked surface, mounted on a matte black frame.",
-          ar: "قشرة معدنية مصبوغة بسطح مشغول يدوياً، مثبتة على هيكل أسود مطفي.",
+          en: "Pigmented paper mâché shell with a hand-worked surface, mounted on a matte black frame.",
+          ar: "قشرة من الورق المعجون مصبوغة بسطح مشغول يدوياً، مثبتة على هيكل أسود مطفي.",
         },
       },
       {
@@ -162,8 +162,8 @@ export const products: Product[] = [
       {
         title: { en: "Materials", ar: "الخامات" },
         body: {
-          en: "UV-stable mineral shell over a treated oak frame, engineered for shaded outdoor spaces.",
-          ar: "قشرة معدنية مقاومة للأشعة فوق البنفسجية على هيكل بلوط معالج، للمساحات الخارجية المظللة.",
+          en: "UV-stable, sealed paper mâché shell over a treated oak frame, engineered for shaded outdoor spaces.",
+          ar: "قشرة من الورق المعجون مُعالَجة ومقاومة للأشعة فوق البنفسجية على هيكل بلوط معالج، للمساحات الخارجية المظللة.",
         },
       },
       {
@@ -246,8 +246,8 @@ export const products: Product[] = [
       {
         title: { en: "Materials", ar: "الخامات" },
         body: {
-          en: "Hand-finished mineral shell with a fine limestone texture and a matte seal.",
-          ar: "قشرة معدنية مُشطّبة يدوياً بملمس حجر جيري ناعم وطبقة حماية مطفية.",
+          en: "Hand-shaped paper mâché shell with a fine stone-like texture and a matte seal.",
+          ar: "قشرة من الورق المعجون مشغولة يدوياً بملمس ناعم يُشبه الحجر وطبقة حماية مطفية.",
         },
       },
       {
