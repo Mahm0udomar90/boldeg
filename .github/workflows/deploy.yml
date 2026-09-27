@@ -34,13 +34,6 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Ensure CNAME and index.html exist
-        run: |
-          echo "boldeg.store" > .output/public/CNAME
-          if [ ! -f .output/public/index.html ] && [ -f .output/public/200.html ]; then
-            cp .output/public/200.html .output/public/index.html
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
