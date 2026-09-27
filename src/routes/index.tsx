@@ -73,7 +73,7 @@ function Home() {
       <SiteHeader overlay />
 
       {/* Hero */}
-      <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden">
+      <section className="relative h-[100svh] min-h-[620px] max-h-[980px] w-full overflow-hidden">
         <video
           src={luminaHeroUrl}
           autoPlay
@@ -81,7 +81,7 @@ function Home() {
           muted
           playsInline
           poster={images.interior}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
           aria-label="A contemporary interior with backlit stone shelving and a Bold cover on its oak stand"
         />
         <div className="absolute inset-0 bg-charcoal/40" />
