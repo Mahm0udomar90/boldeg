@@ -1,19 +1,5 @@
 import type { L, Lang } from "@/lib/i18n";
 
-import boldLogo from "@/assets/bold-logo.png.asset.json";
-import atelierNatural from "@/assets/atelier-natural.png.asset.json";
-import sceneCoverPlace from "@/assets/scene-cover-place.png.asset.json";
-import sceneCoverOnly from "@/assets/scene-cover-only.png.asset.json";
-import brandKey from "@/assets/brand-key.jpeg.asset.json";
-import sceneTerrace from "@/assets/scene-terrace.png.asset.json";
-import sceneCourtyard from "@/assets/scene-courtyard.png.asset.json";
-import sceneInterior from "@/assets/scene-interior.png.asset.json";
-import sceneEvening from "@/assets/scene-evening.png.asset.json";
-import sceneLobby from "@/assets/scene-lobby.png.asset.json";
-import productNavy from "@/assets/product-navy.png.asset.json";
-import productWhite from "@/assets/product-white.png.asset.json";
-import sceneRefill from "@/assets/scene-refill.png.asset.json";
-
 /** Single configurable WhatsApp number (international format, digits only). */
 export const WHATSAPP_NUMBER = "201101263011";
 
@@ -30,19 +16,19 @@ export const SOCIAL = {
 };
 
 export const images = {
-  logo: boldLogo.url,
-  brandKey: brandKey.url,
-  terrace: sceneTerrace.url,
-  courtyard: sceneCourtyard.url,
-  interior: sceneInterior.url,
-  evening: sceneEvening.url,
-  lobby: sceneLobby.url,
-  navy: productNavy.url,
-  white: productWhite.url,
-  refill: sceneRefill.url,
-  atelierNatural: atelierNatural.url,
-  coverPlace: sceneCoverPlace.url,
-  coverOnly: sceneCoverOnly.url,
+  logo: "/images/bold-logo.png",
+  brandKey: "/images/brand-key.jpeg",
+  terrace: "/images/scene-terrace.png",
+  courtyard: "/images/scene-courtyard.png",
+  interior: "/images/scene-interior.png",
+  evening: "/images/scene-evening.png",
+  lobby: "/images/scene-lobby.png",
+  navy: "/images/product-navy.png",
+  white: "/images/product-white.png",
+  refill: "/images/scene-refill.png",
+  atelierNatural: "/images/atelier-natural.png",
+  coverPlace: "/images/scene-cover-place.png",
+  coverOnly: "/images/scene-cover-only.png",
 };
 
 export type Product = {
