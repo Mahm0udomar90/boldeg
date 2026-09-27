@@ -44,6 +44,10 @@ const copy = {
   also: { en: "Also in the collection", ar: "أيضاً في المجموعة" } as L,
   out: { en: "Out of stock — check back soon", ar: "غير متوفر حالياً — عاود الزيارة قريباً" } as L,
   variantOut: { en: "Currently unavailable", ar: "غير متوفر حالياً" } as L,
+  delivery: {
+    en: "Handmade to order — delivery within two weeks.",
+    ar: "تُصنع القطعة يدوياً حسب الطلب — التسليم خلال أسبوعين.",
+  } as L,
 };
 
 function PieceNotFound() {
@@ -168,7 +172,10 @@ function ProductPage() {
                 {t(copy.out)}
               </div>
             ) : (
-              <WhatsAppOrderButton message={message} className="mt-10 hidden w-full md:inline-flex" />
+              <>
+                <WhatsAppOrderButton message={message} className="mt-10 hidden w-full md:inline-flex" />
+                <p className="mt-4 hidden text-xs leading-relaxed text-stone md:block">{t(copy.delivery)}</p>
+              </>
             )}
 
             {/* Details accordion */}
@@ -244,6 +251,7 @@ function ProductPage() {
             <p className="label-xs text-charcoal/70">{formatPrice(product.price, lang)}</p>
             <WhatsAppOrderButton message={message} className="w-full px-4 py-3.5" />
           </div>
+          <p className="mt-2 text-center text-[11px] leading-relaxed text-stone">{t(copy.delivery)}</p>
         </div>
       )}
     </div>

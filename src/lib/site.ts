@@ -97,6 +97,13 @@ export const products: Product[] = [
           ar: "امسح بقطعة قماش ناعمة جافة. تجنّب المنظفات الكاشطة وملامسة الماء الطويلة للخشب.",
         },
       },
+      {
+        title: { en: "Delivery", ar: "التسليم" },
+        body: {
+          en: "Handmade to order — please allow up to two weeks for delivery.",
+          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
+        },
+      },
     ],
   },
   {
@@ -113,7 +120,6 @@ export const products: Product[] = [
     },
     price: 4400,
     images: [images.navy, images.lobby],
-    inStock: false,
     variants: [
       { en: "Indigo", ar: "نيلي" },
       { en: "Charcoal", ar: "فحمي" },
@@ -138,6 +144,13 @@ export const products: Product[] = [
         title: { en: "Care", ar: "العناية" },
         body: { en: "Dry dusting only.", ar: "التنظيف بالمسح الجاف فقط." },
       },
+      {
+        title: { en: "Delivery", ar: "التسليم" },
+        body: {
+          en: "Handmade to order — please allow up to two weeks for delivery.",
+          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
+        },
+      },
     ],
   },
   {
@@ -154,7 +167,6 @@ export const products: Product[] = [
     },
     price: 4600,
     images: [images.white],
-    inStock: false,
     variants: [
       { en: "Blackened Oak", ar: "بلوط مُسوَّد" },
       { en: "Natural Oak", ar: "بلوط طبيعي" },
@@ -181,6 +193,13 @@ export const products: Product[] = [
           ar: "امسح الغبار بقطعة قماش مبللة. احفظه تحت مظلة في أمطار الشتاء.",
         },
       },
+      {
+        title: { en: "Delivery", ar: "التسليم" },
+        body: {
+          en: "Handmade to order — please allow up to two weeks for delivery.",
+          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
+        },
+      },
     ],
   },
   {
@@ -194,7 +213,6 @@ export const products: Product[] = [
     },
     price: 4200,
     images: [images.atelierNatural],
-    inStock: false,
     variants: [
       { en: "Blackened Oak", ar: "بلوط مُسوَّد" },
       { en: "Natural Oak", ar: "بلوط طبيعي" },
@@ -216,6 +234,13 @@ export const products: Product[] = [
         body: {
           en: "Dust regularly. Re-oil once a year to keep the grain warm.",
           ar: "نظّفه من الغبار بانتظام. أعد تزييته مرة سنوياً للحفاظ على دفء الخشب.",
+        },
+      },
+      {
+        title: { en: "Delivery", ar: "التسليم" },
+        body: {
+          en: "Handmade to order — please allow up to two weeks for delivery.",
+          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
         },
       },
     ],
@@ -263,6 +288,13 @@ export const products: Product[] = [
         body: {
           en: "Wipe with a soft dry cloth. Avoid abrasive cleaners.",
           ar: "امسح بقطعة قماش ناعمة جافة. تجنّب المنظفات الكاشطة.",
+        },
+      },
+      {
+        title: { en: "Delivery", ar: "التسليم" },
+        body: {
+          en: "Handmade to order — please allow up to two weeks for delivery.",
+          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
         },
       },
     ],
