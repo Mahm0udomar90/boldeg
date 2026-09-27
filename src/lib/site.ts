@@ -39,7 +39,8 @@ export type Product = {
   description: L;
   price: number;
   images: string[];
-  variants: L[];
+  /** Set `available: false` on a variant to show it struck through and disabled (e.g. temporarily out of stock). */
+  variants: (L & { available?: boolean })[];
   details: { title: L; body: L }[];
   newArrival?: boolean;
   /** Defaults to true; false renders the piece as out of stock. */
@@ -71,7 +72,7 @@ export const products: Product[] = [
     images: [images.interior, images.evening, images.refill],
     variants: [
       { en: "Blackened Oak", ar: "بلوط مُسوَّد" },
-      { en: "Natural Oak", ar: "بلوط طبيعي" },
+      { en: "Natural Oak", ar: "بلوط طبيعي", available: false },
     ],
     newArrival: true,
     details: [

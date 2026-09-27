@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { images, products, formatPrice, BRAND } from "@/lib/site";
 import { useLang, type L } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 const luminaHeroUrl = "/lumina-hero.mp4";
 
 export const Route = createFileRoute("/")({
@@ -67,6 +69,12 @@ const copy = {
 function Home() {
   const { t, lang } = useLang();
   const all = products;
+  const [heroZoomedOut, setHeroZoomedOut] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setHeroZoomedOut(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   return (
     <div className="bg-ivory">
@@ -81,7 +89,10 @@ function Home() {
           muted
           playsInline
           poster={images.interior}
-          className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover object-[50%_35%] hero-zoom",
+            heroZoomedOut && "hero-zoom-out",
+          )}
           aria-label="A contemporary interior with backlit stone shelving and a Bold cover on its oak stand"
         />
         <div className="absolute inset-0 bg-charcoal/40" />

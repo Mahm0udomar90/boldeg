@@ -43,6 +43,7 @@ const copy = {
   details: { en: "Details", ar: "التفاصيل" } as L,
   also: { en: "Also in the collection", ar: "أيضاً في المجموعة" } as L,
   out: { en: "Out of stock — check back soon", ar: "غير متوفر حالياً — عاود الزيارة قريباً" } as L,
+  variantOut: { en: "Currently unavailable", ar: "غير متوفر حالياً" } as L,
 };
 
 function PieceNotFound() {
@@ -63,7 +64,10 @@ function PieceNotFound() {
 function ProductPage() {
   const { product } = Route.useLoaderData();
   const { t, lang } = useLang();
-  const [variantIndex, setVariantIndex] = useState(0);
+  const [variantIndex, setVariantIndex] = useState(() => {
+    const firstAvailable = product.variants.findIndex((v) => v.available !== false);
+    return firstAvailable === -1 ? 0 : firstAvailable;
+  });
   const [qty, setQty] = useState(1);
   const [openDetail, setOpenDetail] = useState<string | null>(product.details[0]?.title.en ?? null);
 
@@ -112,20 +116,28 @@ function ProductPage() {
               <div className="mt-10">
                 <p className="label-xs text-stone">{t(copy.finish)}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  {product.variants.map((v, i) => (
-                    <button
-                      key={v.en}
-                      onClick={() => setVariantIndex(i)}
-                      className={cn(
-                        "border px-5 py-3 label-xs transition-colors duration-500",
-                        variantIndex === i
-                          ? "border-charcoal text-charcoal"
-                          : "border-border text-stone hover:border-charcoal/40",
-                      )}
-                    >
-                      {t(v)}
-                    </button>
-                  ))}
+                  {product.variants.map((v, i) => {
+                    const unavailable = v.available === false;
+                    return (
+                      <button
+                        key={v.en}
+                        onClick={() => !unavailable && setVariantIndex(i)}
+                        disabled={unavailable}
+                        aria-disabled={unavailable}
+                        title={unavailable ? t(copy.variantOut) : undefined}
+                        className={cn(
+                          "border px-5 py-3 label-xs transition-colors duration-500",
+                          unavailable
+                            ? "cursor-not-allowed border-border text-stone/40 line-through"
+                            : variantIndex === i
+                              ? "border-charcoal text-charcoal"
+                              : "border-border text-stone hover:border-charcoal/40",
+                        )}
+                      >
+                        {t(v)}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}
