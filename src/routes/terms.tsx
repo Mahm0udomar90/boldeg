@@ -8,9 +8,9 @@ export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "Terms & Conditions — Bold" },
-      { name: "description", content: "Bold terms of purchase: ordering, 7–10 day delivery, returns within two weeks, and product care." },
+      { name: "description", content: "Bold terms of purchase: ordering, delivery within two weeks, returns for manufacturing defects, and product care." },
       { property: "og:title", content: "Terms & Conditions — Bold" },
-      { property: "og:description", content: "Bold terms of purchase: ordering, 7–10 day delivery, returns within two weeks, and product care." },
+      { property: "og:description", content: "Bold terms of purchase: ordering, delivery within two weeks, returns for manufacturing defects, and product care." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -48,8 +48,8 @@ const sections: Section[] = [
     heading: { en: "Delivery", ar: "التسليم" },
     body: [
       {
-        en: "Orders are delivered within 7 to 10 days from the date your order is confirmed. Because each piece is finished by hand, we will keep you updated on progress, and will notify you immediately if any delay is expected.",
-        ar: "يتم تسليم الطلبات خلال 7 إلى 10 أيام من تاريخ تأكيد طلبك. ونظراً لأن كل قطعة تُشطَّب يدوياً، سنبقيك على اطلاع بمراحل التجهيز، وسنُعلمك فوراً في حال توقُّع أي تأخير.",
+        en: "Orders are delivered within two weeks (14 days) from the date your order is confirmed. Because each piece is finished by hand, we will keep you updated on progress, and will notify you immediately if any delay is expected.",
+        ar: "يتم تسليم الطلبات خلال أسبوعين (14 يوماً) من تاريخ تأكيد طلبك. ونظراً لأن كل قطعة تُشطَّب يدوياً، سنبقيك على اطلاع بمراحل التجهيز، وسنُعلمك فوراً في حال توقُّع أي تأخير.",
       },
     ],
   },
@@ -57,12 +57,12 @@ const sections: Section[] = [
     heading: { en: "Returns", ar: "الإرجاع" },
     body: [
       {
-        en: "You may return a product within two weeks (14 days) of receiving it, provided the product is free of any defect or damage and is returned in its original condition and packaging.",
-        ar: "يمكنك إرجاع المنتج خلال أسبوعين (14 يوماً) من تاريخ استلامه، بشرط ألا يكون بالمنتج أي عيب أو تلف وأن يُعاد بحالته الأصلية وتغليفه الأصلي.",
+        en: "Returns are accepted only in the case of a manufacturing defect, and must be requested within two weeks (14 days) of receiving the product.",
+        ar: "يُقبل الإرجاع في حالة عيب التصنيع فقط، ويجب طلبه خلال أسبوعين (14 يوماً) من تاريخ استلام المنتج.",
       },
       {
-        en: "If your order arrives with a manufacturing defect or damage in transit, contact us immediately with photos and we will arrange a replacement or full refund.",
-        ar: "إذا وصل طلبك بعيب تصنيع أو تلف أثناء الشحن، تواصل معنا فوراً مع صور، وسنرتب استبدالاً أو استرداداً كاملاً للمبلغ.",
+        en: "If your order arrives with a manufacturing defect, contact us immediately with photos and we will arrange a replacement or full refund.",
+        ar: "إذا وصل طلبك بعيب تصنيع، تواصل معنا فوراً مع صور، وسنرتب استبدالاً أو استرداداً كاملاً للمبلغ.",
       },
     ],
   },
