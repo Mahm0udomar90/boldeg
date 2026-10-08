@@ -34,6 +34,7 @@ const copy = {
   enquiries: { en: "Enquiries", ar: "الاستفسارات" } as L,
   whatsapp: { en: "WhatsApp", ar: "واتساب" } as L,
   city: { en: "Cairo, Egypt", ar: "القاهرة، مصر" } as L,
+  poweredBy: { en: "Powered by", ar: "بدعم من" } as L,
   hello: { en: "Hello Bold, I have a question.", ar: "مرحباً Bold، لدي استفسار." } as L,
 };
 
@@ -107,6 +108,17 @@ export function SiteFooter() {
           </div>
           <p className="label-xs text-gold">{t(BRAND.tagline)}</p>
         </div>
+        <p className="mt-8 text-center label-xs text-stone/70">
+          {t(copy.poweredBy)}{" "}
+          <a
+            href="https://www.instagram.com/_iframe_"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline text-charcoal/80"
+          >
+            iframe
+          </a>
+        </p>
       </div>
     </footer>
   );
