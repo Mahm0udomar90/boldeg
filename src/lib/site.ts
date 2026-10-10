@@ -137,7 +137,7 @@ export const products: Product[] = [
     images: [images.white],
     variants: [
       { en: "Blackened Oak", ar: "بلوط مُسوَّد" },
-      { en: "Natural Oak", ar: "بلوط طبيعي" },
+      { en: "Natural Oak", ar: "بلوط طبيعي", available: false },
     ],
     details: [
       {
@@ -182,7 +182,7 @@ export const products: Product[] = [
     price: 4200,
     images: [images.atelierNatural],
     variants: [
-      { en: "Blackened Oak", ar: "بلوط مُسوَّد" },
+      { en: "Blackened Oak", ar: "بلوط مُسوَّد", available: false },
       { en: "Natural Oak", ar: "بلوط طبيعي" },
     ],
     details: [
