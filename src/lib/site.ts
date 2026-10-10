@@ -29,6 +29,7 @@ export const images = {
   atelierNatural: "/images/atelier-natural.webp",
   coverPlace: "/images/scene-cover-place.webp",
   coverOnly: "/images/scene-cover-only.webp",
+  naturalOak: "/images/scene-natural-oak.webp",
   backSofaCard: "/images/back-sofa-card.webp",
   backSofaLifestyle: "/images/back-sofa-lifestyle.webp",
   backSofa3: "/images/back-sofa-3seat.webp",
@@ -85,17 +86,16 @@ export const products: Product[] = [
     images: [images.interior, images.evening, images.refill],
     variants: [
       { en: "Ivory — Blackened Oak", ar: "عاجي — بلوط مُسوَّد", price: 4200, images: [images.interior, images.evening, images.refill] },
-      { en: "Ivory — Natural Oak", ar: "عاجي — بلوط طبيعي", price: 4200, images: [images.interior, images.evening, images.refill], available: false },
+      { en: "Ivory — Natural Oak", ar: "عاجي — بلوط طبيعي", price: 4200, images: [images.naturalOak] },
       { en: "Indigo", ar: "نيلي", price: 4400, images: [images.navy, images.lobby] },
-      { en: "Charcoal", ar: "فحمي", price: 4400, images: [images.navy, images.lobby] },
     ],
     newArrival: true,
     details: [
       {
         title: { en: "Materials", ar: "الخامات" },
         body: {
-          en: "Hand-shaped paper mâché shell, layered and cured to a fine stone-like texture. Ivory sits on a solid oak frame with a matte seal; Indigo and Charcoal are pigmented and mounted on a matte black frame.",
-          ar: "قشرة من الورق المعجون (بابيه ماشيه) مشغولة يدوياً بملمس ناعم يُشبه الحجر. العاجي على هيكل بلوط صلب بطبقة مطفية، والنيلي والفحمي مصبوغان على هيكل أسود مطفي.",
+          en: "Hand-shaped paper mâché shell, layered and cured to a fine stone-like texture. Ivory is available on a blackened or natural solid oak frame with a matte seal; Indigo is pigmented and mounted on a matte black frame.",
+          ar: "قشرة من الورق المعجون (بابيه ماشيه) مشغولة يدوياً بملمس ناعم يُشبه الحجر. العاجي متوفر على هيكل بلوط صلب مُسوَّد أو طبيعي بطبقة مطفية، والنيلي مصبوغ على هيكل أسود مطفي.",
         },
       },
       {
