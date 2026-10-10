@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
-import { images, products, formatPrice, BRAND } from "@/lib/site";
+import { images, products, priceLabel, BRAND } from "@/lib/site";
 import { useLang, type L } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 const luminaHeroUrl = "/lumina-hero.mp4";
@@ -189,7 +189,7 @@ function Home() {
                     <img
                       src={p.images[0]}
                       alt={`${p.name.en} by Bold styled in a contemporary interior`}
-                      className={`img-luxe aspect-[4/5] w-full object-cover${p.inStock === false ? " opacity-60 grayscale-[30%]" : ""}`}
+                      className={`img-luxe aspect-[4/5] w-full ${p.imageFit === "contain" ? "object-contain" : "object-cover"}${p.inStock === false ? " opacity-60 grayscale-[30%]" : ""}`}
                       loading="lazy"
                     />
                     {p.inStock === false && (
@@ -204,7 +204,7 @@ function Home() {
                       <p className="mt-2 max-w-[22ch] text-xs leading-relaxed text-stone">{t(p.tagline)}</p>
                     </div>
                     <p className="label-xs whitespace-nowrap pt-2 text-charcoal/70">
-                      {formatPrice(p.price, lang)}
+                      {priceLabel(p, lang)}
                     </p>
                   </div>
                 </Link>

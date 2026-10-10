@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { WhatsAppOrderButton } from "@/components/WhatsAppOrderButton";
-import { productBySlug, products, formatPrice, orderMessage } from "@/lib/site";
+import { productBySlug, products, formatPrice, priceLabel, orderMessage } from "@/lib/site";
 import { useLang, type L } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -38,6 +38,9 @@ export const Route = createFileRoute("/shop/$slug")({
 const copy = {
   gone: { en: "This piece is no longer listed", ar: "هذه القطعة لم تعد معروضة" } as L,
   back: { en: "Return to the collection", ar: "العودة إلى المجموعة" } as L,
+  size: { en: "Size", ar: "المقاس" } as L,
+  length: { en: "Length", ar: "الطول" } as L,
+  height: { en: "Height", ar: "الارتفاع" } as L,
   finish: { en: "Finish", ar: "التشطيب" } as L,
   quantity: { en: "Quantity", ar: "الكمية" } as L,
   details: { en: "Details", ar: "التفاصيل" } as L,
@@ -72,15 +75,19 @@ function ProductPage() {
     const firstAvailable = product.variants.findIndex((v) => v.available !== false);
     return firstAvailable === -1 ? 0 : firstAvailable;
   });
+  const [sizeIndex, setSizeIndex] = useState(0);
   const [qty, setQty] = useState(1);
   const [openDetail, setOpenDetail] = useState<string | null>(product.details[0]?.title.en ?? null);
 
   const variant = product.variants[variantIndex];
+  const size = product.sizes?.[sizeIndex];
+  const price = size?.price ?? product.price;
   const message = orderMessage({
     name: t(product.name),
+    size: size ? `${t(size.label)} (${t(copy.length)} ${t(size.length)} · ${t(copy.height)} ${t(size.height)})` : "",
     variant: variant ? t(variant) : "",
     quantity: qty,
-    price: product.price,
+    price,
     lang,
   });
   const others = products.filter((p) => p.slug !== product.slug).slice(0, 3);
@@ -114,7 +121,32 @@ function ProductPage() {
             <p className="mt-6 max-w-sm text-sm leading-loose text-stone">{t(product.description)}</p>
 
             <div className="hairline my-10" />
-            <p className="font-display text-2xl text-charcoal">{formatPrice(product.price, lang)}</p>
+            <p className="font-display text-2xl text-charcoal">{formatPrice(price, lang)}</p>
+
+            {product.sizes && (
+              <div className="mt-10">
+                <p className="label-xs text-stone">{t(copy.size)}</p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {product.sizes.map((sz, i) => (
+                    <button
+                      key={sz.label.en}
+                      onClick={() => setSizeIndex(i)}
+                      className={cn(
+                        "border px-5 py-3 text-start label-xs transition-colors duration-500",
+                        sizeIndex === i
+                          ? "border-charcoal text-charcoal"
+                          : "border-border text-stone hover:border-charcoal/40",
+                      )}
+                    >
+                      <span className="block">{t(sz.label)}</span>
+                      <span className="mt-1 block normal-case tracking-normal text-[11px] opacity-70">
+                        {t(copy.length)} {t(sz.length)} · {t(copy.height)} {t(sz.height)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {product.variants.length > 1 && (
               <div className="mt-10">
@@ -227,13 +259,13 @@ function ProductPage() {
                     <img
                       src={p.images[0]}
                       alt={`${t(p.name)} — Bold`}
-                      className="img-luxe aspect-[4/5] w-full object-cover"
+                      className={cn("img-luxe aspect-[4/5] w-full", p.imageFit === "contain" ? "object-contain" : "object-cover")}
                       loading="lazy"
                     />
                   </div>
                   <div className="mt-6 flex items-start justify-between gap-6">
                     <h3 className="font-display text-xl text-charcoal">{t(p.name)}</h3>
-                    <p className="label-xs pt-1 text-charcoal/70">{formatPrice(p.price, lang)}</p>
+                    <p className="label-xs pt-1 text-charcoal/70">{priceLabel(p, lang)}</p>
                   </div>
                 </Link>
               </Reveal>
@@ -248,7 +280,7 @@ function ProductPage() {
       {product.inStock !== false && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-ivory/95 px-5 py-4 backdrop-blur md:hidden">
           <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4">
-            <p className="label-xs text-charcoal/70">{formatPrice(product.price, lang)}</p>
+            <p className="label-xs text-charcoal/70">{formatPrice(price, lang)}</p>
             <WhatsAppOrderButton message={message} className="w-full px-4 py-3.5" />
           </div>
           <p className="mt-2 text-center text-[11px] leading-relaxed text-stone">{t(copy.delivery)}</p>

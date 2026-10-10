@@ -29,6 +29,9 @@ export const images = {
   atelierNatural: "/images/atelier-natural.webp",
   coverPlace: "/images/scene-cover-place.webp",
   coverOnly: "/images/scene-cover-only.webp",
+  backSofaLifestyle: "/images/back-sofa-lifestyle.webp",
+  backSofa3: "/images/back-sofa-3seat.webp",
+  backSofa2: "/images/back-sofa-2seat.webp",
 };
 
 export type Product = {
@@ -37,8 +40,13 @@ export type Product = {
   category: "Home" | "Outdoor" | "Objects";
   tagline: L;
   description: L;
+  /** Base price. When `sizes` is set, this is the lowest size price and is shown as "From …". */
   price: number;
   images: string[];
+  /** Optional size options, each with its own price (e.g. back-of-sofa console for 2- or 3-seat sofas). */
+  sizes?: { label: L; length: L; height: L; price: number }[];
+  /** Use for landscape images so cards show the whole piece instead of cropping it. */
+  imageFit?: "contain";
   /** Set `available: false` on a variant to show it struck through and disabled (e.g. temporarily out of stock). */
   variants: (L & { available?: boolean })[];
   details: { title: L; body: L }[];
@@ -299,7 +307,68 @@ export const products: Product[] = [
       },
     ],
   },
+  {
+    slug: "back-sofa-console",
+    name: { en: "Back Sofa Console", ar: "طاولة خلف الكنبة (Back Sofa)" },
+    category: "Home",
+    tagline: {
+      en: "Walnut console with wireless charging, sockets and cup holders",
+      ar: "كونسول خشب جوز بشاحن لاسلكي ومخارج كهرباء وأماكن للأكواب",
+    },
+    description: {
+      en: "A slim walnut console that sits right behind your sofa. It holds your drinks, charges your phone wirelessly and gives you power sockets and USB ports within arm's reach, so the living room stays tidy and everything you need is at hand.",
+      ar: "كونسول خشب جوز نحيف يوضع خلف الكنبة مباشرة. فيه أماكن للأكواب وشاحن لاسلكي للموبايل ومخارج كهرباء وUSB في متناول يدك، فتفضل الريسبشن مرتبة وكل اللي محتاجه جنبك.",
+    },
+    price: 3200,
+    images: [images.backSofaLifestyle, images.backSofa3, images.backSofa2],
+    imageFit: "contain",
+    sizes: [
+      {
+        label: { en: "Behind a 2-seater sofa", ar: "خلف كنبة ٢ مقعد" },
+        length: { en: "180 cm", ar: "١٨٠ سم" },
+        height: { en: "65 cm", ar: "٦٥ سم" },
+        price: 3200,
+      },
+      {
+        label: { en: "Behind a 3-seater sofa", ar: "خلف كنبة ٣ مقعد" },
+        length: { en: "270 cm", ar: "٢٧٠ سم" },
+        height: { en: "65 cm", ar: "٦٥ سم" },
+        price: 4200,
+      },
+    ],
+    newArrival: true,
+    variants: [{ en: "Walnut", ar: "خشب جوز" }],
+    details: [
+      {
+        title: { en: "Dimensions", ar: "المقاسات" },
+        body: {
+          en: "Height 65 cm. Length 180 cm for a 2-seater sofa, 270 cm for a 3-seater sofa.",
+          ar: "الارتفاع ٦٥ سم. الطول ١٨٠ سم لو خلف كنبة ٢ مقعد، و٢٧٠ سم لو خلف كنبة ٣ مقعد.",
+        },
+      },
+      {
+        title: { en: "Features", ar: "المميزات" },
+        body: {
+          en: "Built-in wireless phone charger, power sockets with USB ports, and stainless-steel cup holders set into the top.",
+          ar: "شاحن لاسلكي للموبايل، مخارج كهرباء مع منافذ USB، وأماكن للأكواب من الاستانلس مدمجة في السطح.",
+        },
+      },
+      {
+        title: { en: "Delivery", ar: "التسليم" },
+        body: {
+          en: "Handmade to order — please allow up to two weeks for delivery.",
+          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
+        },
+      },
+    ],
+  },
 ];
+
+/** Price label for cards: "From …" when a product has several sized prices. */
+export const priceLabel = (p: Product, lang: Lang = "en") =>
+  p.sizes && p.sizes.length > 1
+    ? `${lang === "ar" ? "من" : "From"} ${formatPrice(Math.min(...p.sizes.map((x) => x.price)), lang)}`
+    : formatPrice(p.price, lang);
 
 export const productBySlug = (slug: string) => products.find((p) => p.slug === slug);
 
@@ -313,6 +382,7 @@ export function whatsappLink(message: string) {
 export function orderMessage(opts: {
   name: string;
   variant?: string;
+  size?: string;
   quantity?: number;
   price: number;
   lang?: Lang;
@@ -323,6 +393,7 @@ export function orderMessage(opts: {
         "مرحباً Bold،",
         "",
         `أرغب في طلب: ${opts.name}`,
+        opts.size ? `المقاس: ${opts.size}` : null,
         opts.variant ? `التشطيب: ${opts.variant}` : null,
         opts.quantity ? `الكمية: ${opts.quantity}` : null,
         `السعر: ${formatPrice(opts.price, "ar")}`,
@@ -331,6 +402,7 @@ export function orderMessage(opts: {
         "Hello Bold,",
         "",
         `I would like to order: ${opts.name}`,
+        opts.size ? `Size: ${opts.size}` : null,
         opts.variant ? `Finish: ${opts.variant}` : null,
         opts.quantity ? `Quantity: ${opts.quantity}` : null,
         `Price: ${formatPrice(opts.price)}`,

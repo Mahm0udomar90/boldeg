@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
-import { categories, products, formatPrice } from "@/lib/site";
+import { categories, products, priceLabel } from "@/lib/site";
 import { useLang, type L } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -92,7 +92,7 @@ function Shop() {
                   <img
                     src={p.images[0]}
                     alt={`${t(p.name)} — Bold`}
-                    className={cn("img-luxe aspect-[4/5] w-full object-cover", p.inStock === false && "opacity-60 grayscale-[30%]")}
+                    className={cn("img-luxe aspect-[4/5] w-full", p.imageFit === "contain" ? "object-contain" : "object-cover", p.inStock === false && "opacity-60 grayscale-[30%]")}
                     loading="lazy"
                   />
                   {p.inStock === false && (
@@ -105,7 +105,7 @@ function Shop() {
                   <div className="flex items-start justify-between gap-6">
                     <h2 className="font-display text-2xl text-charcoal">{t(p.name)}</h2>
                     <p className="label-xs whitespace-nowrap pt-2 text-charcoal/70">
-                      {formatPrice(p.price, lang)}
+                      {priceLabel(p, lang)}
                     </p>
                   </div>
                   <p className="mt-3 max-w-[34ch] text-xs leading-relaxed text-stone">{t(p.tagline)}</p>
