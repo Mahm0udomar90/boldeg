@@ -90,9 +90,9 @@ function Shop() {
               <Link to="/shop/$slug" params={{ slug: p.slug }} className="group block">
                 <div className="relative overflow-hidden bg-sand/50">
                   <img
-                    src={p.images[0]}
+                    src={p.cardImage ?? p.images[0]}
                     alt={`${t(p.name)} — Bold`}
-                    className={cn("img-luxe aspect-[4/5] w-full", p.imageFit === "contain" ? "object-contain" : "object-cover", p.inStock === false && "opacity-60 grayscale-[30%]")}
+                    className={cn("img-luxe aspect-[4/5] w-full object-cover", p.inStock === false && "opacity-60 grayscale-[30%]")}
                     loading="lazy"
                   />
                   {p.inStock === false && (

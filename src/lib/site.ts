@@ -29,6 +29,7 @@ export const images = {
   atelierNatural: "/images/atelier-natural.webp",
   coverPlace: "/images/scene-cover-place.webp",
   coverOnly: "/images/scene-cover-only.webp",
+  backSofaCard: "/images/back-sofa-card.webp",
   backSofaLifestyle: "/images/back-sofa-lifestyle.webp",
   backSofa3: "/images/back-sofa-3seat.webp",
   backSofa2: "/images/back-sofa-2seat.webp",
@@ -45,10 +46,13 @@ export type Product = {
   images: string[];
   /** Optional size options, each with its own price (e.g. back-of-sofa console for 2- or 3-seat sofas). */
   sizes?: { label: L; length: L; height: L; price: number }[];
-  /** Use for landscape images so cards show the whole piece instead of cropping it. */
-  imageFit?: "contain";
+  /** Optional image used on cards (4:5 crop). Defaults to images[0]. */
+  cardImage?: string;
+  /** Other slugs that should open this product (e.g. old per-color pages that were merged). */
+  aliases?: string[];
   /** Set `available: false` on a variant to show it struck through and disabled (e.g. temporarily out of stock). */
-  variants: (L & { available?: boolean })[];
+  /** A variant can override the price and the gallery images (e.g. a different color). */
+  variants: (L & { available?: boolean; price?: number; images?: string[] })[];
   details: { title: L; body: L }[];
   newArrival?: boolean;
   /** Defaults to true; false renders the piece as out of stock. */
@@ -65,30 +69,33 @@ export const categories = [
 
 export const products: Product[] = [
   {
-    slug: "signature-cover-ivory",
-    name: { en: "Signature Cover — Ivory", ar: "الغطاء المميز — عاجي" },
+    slug: "signature-cover",
+    aliases: ["signature-cover-ivory", "signature-cover-indigo"],
+    name: { en: "Signature Cover", ar: "الغطاء المميز" },
     category: "Home",
     tagline: {
-      en: "Textured stone finish on blackened oak",
-      ar: "تشطيب حجري بملمس طبيعي على خشب بلوط مُسوَّد",
+      en: "Textured stone finish, in ivory or deep indigo",
+      ar: "تشطيب حجري بملمس طبيعي، بلون عاجي أو نيلي عميق",
     },
     description: {
-      en: "A sculpted cover that turns the everyday water dispenser into a quiet part of your interior.",
-      ar: "غطاء منحوت يحوّل مبرّد المياه اليومي إلى قطعة هادئة ضمن ديكور منزلك.",
+      en: "A sculpted cover that turns the everyday water dispenser into a quiet part of your interior. Choose ivory for light, airy rooms or deep indigo for interiors built on stone, bronze and shadow.",
+      ar: "غطاء منحوت يحوّل مبرّد المياه اليومي إلى قطعة هادئة ضمن ديكور منزلك. اختر العاجي للمساحات الفاتحة، أو النيلي العميق للمساحات التي تعتمد على الحجر والبرونز والظل.",
     },
     price: 4200,
     images: [images.interior, images.evening, images.refill],
     variants: [
-      { en: "Blackened Oak", ar: "بلوط مُسوَّد" },
-      { en: "Natural Oak", ar: "بلوط طبيعي", available: false },
+      { en: "Ivory — Blackened Oak", ar: "عاجي — بلوط مُسوَّد", price: 4200, images: [images.interior, images.evening, images.refill] },
+      { en: "Ivory — Natural Oak", ar: "عاجي — بلوط طبيعي", price: 4200, images: [images.interior, images.evening, images.refill], available: false },
+      { en: "Indigo", ar: "نيلي", price: 4400, images: [images.navy, images.lobby] },
+      { en: "Charcoal", ar: "فحمي", price: 4400, images: [images.navy, images.lobby] },
     ],
     newArrival: true,
     details: [
       {
         title: { en: "Materials", ar: "الخامات" },
         body: {
-          en: "Hand-shaped paper mâché shell, layered and cured to a fine stone-like texture, on a solid oak frame with a matte seal.",
-          ar: "قشرة من الورق المعجون (بابيه ماشيه) مشغولة يدوياً طبقة بعد طبقة بملمس ناعم يُشبه الحجر، على هيكل بلوط صلب بطبقة حماية مطفية.",
+          en: "Hand-shaped paper mâché shell, layered and cured to a fine stone-like texture. Ivory sits on a solid oak frame with a matte seal; Indigo and Charcoal are pigmented and mounted on a matte black frame.",
+          ar: "قشرة من الورق المعجون (بابيه ماشيه) مشغولة يدوياً بملمس ناعم يُشبه الحجر. العاجي على هيكل بلوط صلب بطبقة مطفية، والنيلي والفحمي مصبوغان على هيكل أسود مطفي.",
         },
       },
       {
@@ -104,53 +111,6 @@ export const products: Product[] = [
           en: "Wipe with a soft dry cloth. Avoid abrasive cleaners and prolonged water contact on the oak.",
           ar: "امسح بقطعة قماش ناعمة جافة. تجنّب المنظفات الكاشطة وملامسة الماء الطويلة للخشب.",
         },
-      },
-      {
-        title: { en: "Delivery", ar: "التسليم" },
-        body: {
-          en: "Handmade to order — please allow up to two weeks for delivery.",
-          ar: "تُصنع القطعة يدوياً حسب الطلب — يُرجى توقّع مدة تسليم تصل إلى أسبوعين.",
-        },
-      },
-    ],
-  },
-  {
-    slug: "signature-cover-indigo",
-    name: { en: "Signature Cover — Indigo", ar: "الغطاء المميز — نيلي" },
-    category: "Home",
-    tagline: {
-      en: "Deep pigment for darker, layered rooms",
-      ar: "لون عميق للمساحات الداكنة والغنية بالطبقات",
-    },
-    description: {
-      en: "The same architecture in a deep indigo finish, made for interiors built on stone, bronze and shadow.",
-      ar: "نفس التصميم بلون نيلي عميق، مصمّم لمساحات تعتمد على الحجر والبرونز والظل.",
-    },
-    price: 4400,
-    images: [images.navy, images.lobby],
-    variants: [
-      { en: "Indigo", ar: "نيلي" },
-      { en: "Charcoal", ar: "فحمي" },
-    ],
-    newArrival: true,
-    details: [
-      {
-        title: { en: "Materials", ar: "الخامات" },
-        body: {
-          en: "Pigmented paper mâché shell with a hand-worked surface, mounted on a matte black frame.",
-          ar: "قشرة من الورق المعجون مصبوغة بسطح مشغول يدوياً، مثبتة على هيكل أسود مطفي.",
-        },
-      },
-      {
-        title: { en: "Dimensions", ar: "المقاسات" },
-        body: {
-          en: "Height 96 cm · Diameter 38 cm · Frame footprint 42 × 42 cm.",
-          ar: "الارتفاع ٩٦ سم · القطر ٣٨ سم · قاعدة الهيكل ٤٢ × ٤٢ سم.",
-        },
-      },
-      {
-        title: { en: "Care", ar: "العناية" },
-        body: { en: "Dry dusting only.", ar: "التنظيف بالمسح الجاف فقط." },
       },
       {
         title: { en: "Delivery", ar: "التسليم" },
@@ -321,7 +281,7 @@ export const products: Product[] = [
     },
     price: 3200,
     images: [images.backSofaLifestyle, images.backSofa3, images.backSofa2],
-    imageFit: "contain",
+    cardImage: images.backSofaCard,
     sizes: [
       {
         label: { en: "Behind a 2-seater sofa", ar: "خلف كنبة ٢ مقعد" },
@@ -364,16 +324,20 @@ export const products: Product[] = [
   },
 ];
 
-/** Price label for cards: "From …" when a product has several sized prices. */
-export const priceLabel = (p: Product, lang: Lang = "en") =>
-  p.sizes && p.sizes.length > 1
-    ? `${lang === "ar" ? "من" : "From"} ${formatPrice(Math.min(...p.sizes.map((x) => x.price)), lang)}`
-    : formatPrice(p.price, lang);
-
-export const productBySlug = (slug: string) => products.find((p) => p.slug === slug);
+export const productBySlug = (slug: string) =>
+  products.find((p) => p.slug === slug || p.aliases?.includes(slug));
 
 export const formatPrice = (v: number, lang: Lang = "en") =>
   lang === "ar" ? `${v.toLocaleString("ar-EG")} ج.م` : `EGP ${v.toLocaleString("en-US")}`;
+
+/** Price label for cards: "From …" when a product has several different prices (sizes or colors). */
+export const priceLabel = (p: Product, lang: Lang = "en") => {
+  const sized = p.sizes?.map((x) => x.price) ?? [];
+  const pool = sized.length ? sized : p.variants.map((v) => v.price ?? p.price);
+  const min = Math.min(...pool);
+  const max = Math.max(...pool);
+  return min !== max ? `${lang === "ar" ? "من" : "From"} ${formatPrice(min, lang)}` : formatPrice(min, lang);
+};
 
 export function whatsappLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

@@ -81,7 +81,8 @@ function ProductPage() {
 
   const variant = product.variants[variantIndex];
   const size = product.sizes?.[sizeIndex];
-  const price = size?.price ?? product.price;
+  const price = size?.price ?? variant?.price ?? product.price;
+  const gallery = variant?.images ?? product.images;
   const message = orderMessage({
     name: t(product.name),
     size: size ? `${t(size.label)} (${t(copy.length)} ${t(size.length)} · ${t(copy.height)} ${t(size.height)})` : "",
@@ -100,7 +101,7 @@ function ProductPage() {
         <div className="mx-auto grid max-w-[1600px] gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-24">
           {/* Gallery */}
           <div className="space-y-4 md:space-y-6">
-            {product.images.map((src, i) => (
+            {gallery.map((src, i) => (
               <Reveal key={src} delay={i * 60} className="overflow-hidden bg-sand/50">
                 <img
                   src={src}
@@ -257,9 +258,9 @@ function ProductPage() {
                 <Link to="/shop/$slug" params={{ slug: p.slug }} className="group block">
                   <div className="overflow-hidden bg-sand/50">
                     <img
-                      src={p.images[0]}
+                      src={p.cardImage ?? p.images[0]}
                       alt={`${t(p.name)} — Bold`}
-                      className={cn("img-luxe aspect-[4/5] w-full", p.imageFit === "contain" ? "object-contain" : "object-cover")}
+                      className={"img-luxe aspect-[4/5] w-full object-cover"}
                       loading="lazy"
                     />
                   </div>
